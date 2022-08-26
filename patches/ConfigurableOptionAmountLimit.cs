@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using ConfigurableOptionAmountLimit;
 using HarmonyLib;
 using TMPro;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming -- Parameter naming coupled to Harmony injection (reflection): https://harmony.pardeike.net/articles/patching-injections.html
 
-namespace ConfigurableOptionAmount.patches;
+namespace ConfigurableOptionAmountLimit.patches;
 
 internal static class ConfigurableOptionAmountLimit {
     [HarmonyPatch(typeof(OptionAmount), "selectedAmountUp")]
