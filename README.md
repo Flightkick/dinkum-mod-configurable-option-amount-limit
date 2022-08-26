@@ -9,7 +9,16 @@
 
 If you answered any of those questions with yes, this mod may be for you!
 
-This mod makes the limit configurable. By default it is set to `999` which should be enough for most players.
+This mod makes the limit configurable. By default it is set to `999` which should be enough for most players.  
+Additionally, it maps controls to increment/decrement values by 10/100 when held.
+
+Controller:
+- Hold `LB` to modify by 10
+- Hold `RB` to modify by 100
+
+KBM:
+- Hold `1` to modify by 10
+- Hold `2` to modify by 100
 
 <img src="https://raw.githubusercontent.com/Flightkick/dinkum-mod-configurable-option-amount-limit/master/.github/assets/img/dinkum-configurableoptionamountlimit.png" alt="Configurable Option Amount Limit Showcase" />
 
