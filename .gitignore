@@ -1,4 +1,13 @@
-﻿# Created by https://www.toptal.com/developers/gitignore/api/unity,csharp,intellij,visualstudio
+﻿# Manual entries
+sonarlint.xml
+sonarlint-state.xml
+.sonarqube/
+
+
+
+
+
+# Created by https://www.toptal.com/developers/gitignore/api/unity,csharp,intellij,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=unity,csharp,intellij,visualstudio
 
 ### Csharp ###
