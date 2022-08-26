@@ -150,9 +150,13 @@ internal static class ConfigurableOptionAmountLimit {
 
     [SuppressMessage("ReSharper", "RedundantIfElseBlock")] // Readability
     private static int GetIncrement(InputMaster input, int modifier) {
-        if (input.RBHeld()) {
+        int invSlotNumber = input.getInvSlotNumber();
+        bool modifierTimes100 = input.RBHeld() || invSlotNumber == 1;
+        bool modifierTimes10 = input.LBHeld() || invSlotNumber == 0;
+
+        if (modifierTimes100) {
             return 100 * modifier;
-        } else if (input.LBHeld()) {
+        } else if (modifierTimes10) {
             return 10 * modifier;
         } else {
             return 1 * modifier;
