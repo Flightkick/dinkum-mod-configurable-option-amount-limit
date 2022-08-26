@@ -113,7 +113,7 @@ internal static class ConfigurableOptionAmountLimit {
                         _selectedAmount = Mathf.Clamp(_selectedAmount + increment, 1, _plugin.MaxItemBuyLimit);
                         _selectedAmountField.SetValue(_selectedAmount);
                         _selectedAmountText.text = _selectedAmount.ToString();
-                        _moneyAmount.text = "<sprite=11>" + (_selectedAmount * (Inventory.inv.allItems[_itemIdBeingShown].value * 2)).ToString("n0");
+                        _moneyAmount.text = "<sprite=11>" + (_selectedAmount * Inventory.inv.allItems[_itemIdBeingShown].value * 2).ToString("n0");
                     }
 
                     holdTimer = Mathf.Clamp(holdTimer + Time.deltaTime / 8f, 0.0f, 0.14f);
