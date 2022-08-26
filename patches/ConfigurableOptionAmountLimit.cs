@@ -70,13 +70,13 @@ internal static class ConfigurableOptionAmountLimit {
     private sealed class HoldUpOrDownPatch {
         private sealed class HoldUpOrDownEnumerator : IEnumerable {
             private readonly Plugin _plugin;
-            private readonly OptionAmount _instance;
             private int _selectedAmount;
             private readonly TextMeshProUGUI _selectedAmountText;
             private readonly TextMeshProUGUI _moneyAmount;
             private readonly int _itemIdBeingShown;
             private readonly int _modifier;
             private readonly InputMaster _input;
+            private readonly Traverse _selectedAmountField;
 
             public HoldUpOrDownEnumerator(Plugin plugin,
                                           OptionAmount instance,
@@ -86,13 +86,13 @@ internal static class ConfigurableOptionAmountLimit {
                                           int itemIdBeingShown,
                                           int modifier) {
                 _plugin = plugin;
-                _instance = instance;
                 _selectedAmount = selectedAmount;
                 _selectedAmountText = selectedAmountText;
                 _moneyAmount = moneyAmount;
                 _itemIdBeingShown = itemIdBeingShown;
                 _modifier = modifier;
                 _input = InputMaster.input;
+                _selectedAmountField = Traverse.Create(instance).Field("selectedAmount");
             }
 
             IEnumerator IEnumerable.GetEnumerator() {
@@ -111,7 +111,7 @@ internal static class ConfigurableOptionAmountLimit {
                         if (_selectedAmount + increment == Mathf.Clamp(_selectedAmount + increment, 1, _plugin.MaxItemBuyLimit))
                             SoundManager.manage.play2DSound(SoundManager.manage.inventorySound);
                         _selectedAmount = Mathf.Clamp(_selectedAmount + increment, 1, _plugin.MaxItemBuyLimit);
-                        Traverse.Create(_instance).Field("selectedAmount").SetValue(_selectedAmount);
+                        _selectedAmountField.SetValue(_selectedAmount);
                         _selectedAmountText.text = _selectedAmount.ToString();
                         _moneyAmount.text = "<sprite=11>" + (_selectedAmount * (Inventory.inv.allItems[_itemIdBeingShown].value * 2)).ToString("n0");
                     }
